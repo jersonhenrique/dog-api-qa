@@ -1,4 +1,4 @@
-# Testes Automatizados para a Dog API (PT-BR)
+# Testes Automatizados para a Dog API
 
 Projeto de automação de testes da Dog API utilizando:
 - Java
