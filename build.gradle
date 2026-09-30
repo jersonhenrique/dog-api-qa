@@ -1,10 +1,15 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '4.3.0'
 }
 
-group 'com.example'
-version '1.0-SNAPSHOT'
-sourceCompatibility = '11'
+group = 'com.example'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
     mavenCentral()
@@ -12,11 +17,27 @@ repositories {
 
 dependencies {
     testImplementation 'io.rest-assured:rest-assured:5.3.0'
-    testImplementation 'io.rest-assured:json-path:5.3.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.9.2'
     testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.11.0'
     testImplementation 'io.cucumber:cucumber-java:7.11.0'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+allure {
+    version = '3.14.3'
+
+    adapter {
+        aspectjWeaver = false
+
+        frameworks {
+            cucumber7Jvm
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 11
 }
 
 test {
