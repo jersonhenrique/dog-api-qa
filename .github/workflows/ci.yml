@@ -33,11 +33,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Run tests
-        run: ./gradlew clean test
+        run: bash ./gradlew clean test
 
       - name: Generate Allure report
         if: always()
-        run: ./gradlew allureReport
+        run: bash ./gradlew allureReport
 
       - name: Upload Allure report and results
         if: always()
